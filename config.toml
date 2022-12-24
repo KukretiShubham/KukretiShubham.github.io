@@ -8,8 +8,7 @@ theme = "black-and-light"
 pygmentsstyle       = "bw"
 pygmentscodefences  = true
 
-[permalinks]
-posts = ":slug/"
+
 
 [params]
   sitename = "Shubham Kukreti"
