@@ -1,0 +1,26 @@
+baseurl = "https://www.shubhamkukreti.com"
+title = "Shubham Kukreti"
+author = "Shubham Kukreti"
+canonifyurls = true
+languagecode = "en"
+theme = "black-and-light"
+
+pygmentsstyle       = "bw"
+pygmentscodefences  = true
+
+[permalinks]
+posts = ":slug/"
+
+[params]
+  sitename = "Shubham Kukreti"
+  disableWebFonts = false
+
+[[menu.main]]
+    name = "About"
+    url  = "https://github.com/davidhampgonsalves/hugo-black-and-light-theme"
+[[menu.main]]
+    name = "Projects"
+    url  = "https://github.com/davidhampgonsalves/hugo-black-and-light-theme"
+[[menu.main]]
+    name = "Resume"
+    url  = "https://github.com/davidhampgonsalves/hugo-black-and-light-theme"
