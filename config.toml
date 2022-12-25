@@ -3,7 +3,7 @@ title = "Shubham Kukreti"
 author = "Shubham Kukreti"
 canonifyurls = true
 languagecode = "en"
-theme = "black-and-light"
+theme = "hugo-black-and-light-theme"
 
 pygmentsstyle       = "bw"
 pygmentscodefences  = true
