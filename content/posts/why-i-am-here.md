@@ -12,7 +12,7 @@ draft: false
 I am an overthinker. I love to dive into more profound thoughts. Sometimes my thoughts are around real-world situations or experiences; sometimes, I develop different constructs and think from all different sides.
 
 
-This over-thinking behaviour has led me to develop a habit of researching or digging the rabbit hole and not bringing conclusions from just a single side. And I love it.
+This over-thinking behaviour has led me to develop a habit of researching or going down the rabbit hole and not bringing conclusions from just a single side. And I love it.
 
 Currently, I am learning about decentralised systems, zero-knowledge proofs, deep space and sometimes about ancient Hindu scriptures.
 
