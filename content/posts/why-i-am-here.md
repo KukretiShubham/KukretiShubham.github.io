@@ -5,7 +5,7 @@ draft: false
 ---
 
 
-{{< figure src="/images/myself/1.jpg" alt="Alt text">}}
+{{< figure src="/images/myself/1.jpg" alt="Shubham Kukreti">}}
 
 ## tl;dr - I don't know
 
@@ -18,7 +18,7 @@ Currently, I am learning about decentralised systems, zero-knowledge proofs, dee
 
 You may soon find me writing about these topics. 
 
-The reason for not choosing a platform and hosting my blog site on my own is that I want to control my content. What if a platform were to delist my blog or remove all my writing?
+The reason for not choosing a platform and hosting my blog site on my own is that I want to control my content. What if a platform were to delist my blog or remove all my writings?
 
 Also, not so fancy reason. I love writing my blogs in a code editor.
 
