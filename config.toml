@@ -21,3 +21,6 @@ posts = ":slug/"
 [[menu.main]]
     name = "Github"
     url  = "https://github.com/KukretiShubham"
+[[menu.main]]
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/shubhamkukreti/"
