@@ -1,12 +1,12 @@
 ---
-title: "On a New Voyage"
+title: "Then to Now"
 date: 2025-03-13T20:25:01+05:30
 images: ["/images/dump/2.jpg"]
 description: "It’s always about journey"
 draft: false
 ---
 
-## It’s always about journey, on a new voyage now 
+## I think it's the Journey
 
 I’m writing this as I’ve just boarded Caltrain from San Francisco to Palo Alto. The Wi-Fi won’t connect, but the views are incredible. Emotions? All over the place. So, like always, I’m thinking about the road that got me here.
 
@@ -37,36 +37,36 @@ In my 8th class, I learnt about Bitcoin and had a few satoshis in my wallet, but
 Created a YouTube channel where I used to teach physics. Had 100K views on my YT channel back then. Lol. I deleted that channel btw, idk why, I just felt cringed. But I want it back now lol.
 
 ### Academics Cooked me
-After 10th, academics took over JEE, NDA, and board prep all at once. Couldn’t afford coaching, but JIO Dhan Dana happened. Downloaded lectures from YouTube, which helped me clear boards and NDA (though I skipped SSB). JEE scores weren't good. Took a drop year,this year pattern changed lol, got two chances yayyy!! but still got cooked. Two subjects at 99.9 percentile, but one ruined the shot. Advanced didn’t go well either. IIT was out of hand now. Ended up in a nearby NIT (actually didn’t get top NITs).
+After 10th, academics took over me JEE, NDA, and board prep all at once. Couldn’t afford coaching, but JIO Dhan Dhana Dhan happened. I could download lectures from YouTube, which helped me clear boards. But, JEE scores weren’t good. Had to take a drop year, this year pattern changed lol, got two chances yayyy!! but still got cooked. Two subjects at 99.9 percentile, but one ruined the shot. Advanced didn’t go well either. Top IITs were out of hand now. I ended up in NITJ (actually didn’t get top NITs either).
 
-College was in a different city. Moved to hostel. I could manage alone, but not without my PC which had to stay home, as my sister used it too. So now, in college with no PC, no books, just a Redmi Note 5 and zero motivation. Got wrecked in the first minor exams. Started studying on my phone, borrowed laptops when I could. But the spark was missing. I had dreamt of doing Iron Man level stuff in engineering. Reality was far off.
+So college was in a different city. Had to move to hostel. I could manage alone, but not without my PC which had to stay home, as my sister used it too. So now, in college with no PC. Got wrecked in the first minor exams. Started studying on my phone (redmi note 5), borrowed laptops when I could. But the spark was missing. I had dreamt of doing Iron Man level stuff in engineering. Reality was far off. TBH frustating.
 
-Started building on my phone. Used Replit, found apps to run C++ and Linux environments. Felt empty, had no friends, grades were slipping, doubts were creeping in. There was a hackathon by the DSC Club. I coded entirely on my phone, and won. Suddenly, I was alive again.
+Started building on my phone. Used Replit, found apps to run C++ and Linux environments. Still felt empty, made no friends, grades were slipping & doubts were creeping in. Then there was a hackathon by the DSC Club, a very small one. I coded entirely on my phone, and won.
 Here’s the LinkedIn post I made back then lol:
 https://www.linkedin.com/posts/shubhamkukreti_developerstudentclubs-code2success-webdevelopment-activity-6629801113094848512-FWum/
 
-That’s when I felt alive again—building, breaking, figuring stuff out. Joined a few clubs. Contributed where it felt right.
+That’s when I felt alive again. Building, breaking, figuring stuff out. Then I Joined a few clubs. Contributed where it felt right.
 
 ### Covid & Lockdown
-I came back home for the Holi holidays. Then COVID happened. Our minor exams got postponed, and soon after, the lockdown began. It was an unfortunate time, but it gave me a chance to reconnect with my computer. I also received a 2008 Lenovo laptop from my uncle. Now, I had my own machine and that changed everything.
+I was back home for the Holi holidays. Then COVID happened. Our second sem minor exams got postponed, and soon after, the lockdown began. It was an unfortunate time, but it gave me a chance to reconnect with my computer. I also received a 2008 Lenovo laptop from my uncle. Now, I had my own machine (suddenly now two) and that changed everything. Fist thing i did first, was installed manjaro & custom shell. Now, i could build anything on this machine.
 
-With classes shifting online, all I had to do was open another tab. I started exploring GitHub, open source projects, and ended up winning bounties worth several thousand dollars. I joined a few online Discord communities. One of my pull requests to an open-source organization caught attention and led to a part-time opportunity, which eventually turned into a full-time role. That became a solid income stream.
+With classes shifting online, all I had to do was open another tab. Gave time to explore things like open source, communities, hackathons. I ended up winning bounties worth several thousand dollars. I created a small community with few online friends with a charter that after winning hackathon we would take up 80% & rest 20% we would give away to budding devs in the community. I remember giving away $5000 in total. During that time one of my pull requests to an open-source organization caught attention and led to a part-time opportunity, which eventually turned into a full-time role. That became a solid income stream.
 
 I was able to help my family pay off their debts.
 
 Participating in online hackathons and remote work brought in money I had never imagined earning before. I attended a hackathon hosted by Devfolio with Lightspeed as one leg of the flight was sponsored, which really helped:
 https://x.com/ShubhamKukretii/status/1530492054081458176 
 
-Life finally felt on track. I bought myself a MacBook Air M1 (first machine with my own money). From there, I kept making steady progress, learning everything I could always with a deep sense of gratitude.
+Life finally felt on track. I bought myself a MacBook Air M1 (first machine with my own money). From there, I kept making steady progress, learning everything I could with a deep sense of gratitude.
 
 I consider myself LUCKY.
 
 ### Travels
-Even before graduating, I worked full-time. I had built up a sufficient fund corpus, enough to keep me afloat and ensure I never had to struggle again for basic needs or go without proper computing power.
+Now, even before graduating, I had full-time work exp. I had built up a sufficient fund corpus, enough to keep me afloat and ensure I never had to struggle again for basic needs or go without proper computing power.
 
 When my batch had its farewell, I went backpacking in Vietnam for 20 days. I covered everything from Phu Quoc Island to Hanoi and Halong Bay. To be honest, I was loving it and really wanted to do SAPA and the Ha Giang Loop, but I had to return for my exams. That trip was my first time visiting a foreign country.
 
-Around the same time, I received a job offer that was 3x my current salary. I declined it. I genuinely liked where I was working, and there was no immediate need for more funds.
+Around the same time, I received a job offer that was 3x my current compensation. I declined it. I genuinely liked where I was working, and there was no immediate need for more funds.
 
 Since then, I’ve traveled to more countries for work and hackathons and I’ve loved every bit of it.
 
@@ -74,11 +74,10 @@ I met my co-founder in a Clubhouse in BLR. We exchanged ideas and started buildi
 
 ### New Journey
 
-While few days back, returning from Denver, I’ve just resigned from my current job to build something of my own. This is something I’ve always wanted to do. And I feel like now is my moment.
+A few days back, just before heading back from Denver, I resigned from my job to start building something of my own. This is something I’ve always wanted to do, and it finally feels like the right time. I’m not scared of what’s ahead. I’ve already lived through what most would call the worst. There’s no safety net. I’m back on the road again. Let’s see where it takes me. 
 
-I’m not afraid of any situation. I’ve lived through what many would call the worst. There’s no backup plan. I’m back on the journey again. Let's see how it goes.
+If you’ve made it this far,
+Thanks for sticking around and bearing with my blog.
 
 ----
 Caltrain’s slowing; Palo Alto’s next. Time to hop off and keep moving. Catch you on the other side. There’s a startup to build. 
-
-Thanks for reading. 
