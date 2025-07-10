@@ -9,7 +9,7 @@ pygmentsstyle       = "bw"
 pygmentscodefences  = true
 
 [permalinks]
-posts = ":slug/"
+research = ":slug/"
 
 [params]
   sitename = "Shubham Kukreti"
@@ -18,9 +18,24 @@ posts = ":slug/"
 [[menu.main]]
     name = "Twitter"
     url  = "https://twitter.com/ShubhamKukretii"
+    weight = 100
 [[menu.main]]
     name = "Github"
     url  = "https://github.com/KukretiShubham"
+    weight = 110
 [[menu.main]]
     name = "LinkedIn"
     url = "https://www.linkedin.com/in/shubhamkukreti/"
+    weight = 120
+[[menu.main]]
+    name = "Research"
+    url = "/research/"
+    weight = 1
+[[menu.main]]
+    name = "Blogs"
+    url = "/blogs/"
+    weight = 2
+[[menu.main]]
+    name = "Gallery"
+    url = "/gallery/"
+    weight = 3
