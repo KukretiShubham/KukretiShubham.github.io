@@ -2,6 +2,7 @@
 title: "Chopped My Hair"
 date: 2025-05-28T13:26:20+05:30
 draft: false
+categories: ["Personal"]
 ---
 
 If you know me, then you’ve definitely seen me with long hair. Like, *really* long. I’ve been growing it out for almost 1.5 years now.

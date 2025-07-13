@@ -8,34 +8,24 @@ theme = "hugo-black-and-light-theme"
 pygmentsstyle       = "bw"
 pygmentscodefences  = true
 
-[permalinks]
-research = ":slug/"
-
 [params]
   sitename = "Shubham Kukreti"
   disableWebFonts = false
+  
+  # Social media links for the dropdown
+  twitter = "https://twitter.com/ShubhamKukretii"
+  github = "https://github.com/KukretiShubham"
+  linkedin = "https://www.linkedin.com/in/shubhamkukreti/"
 
-[[menu.main]]
-    name = "Twitter"
-    url  = "https://twitter.com/ShubhamKukretii"
-    weight = 100
-[[menu.main]]
-    name = "Github"
-    url  = "https://github.com/KukretiShubham"
-    weight = 110
-[[menu.main]]
-    name = "LinkedIn"
-    url = "https://www.linkedin.com/in/shubhamkukreti/"
-    weight = 120
-[[menu.main]]
-    name = "Research"
-    url = "/research/"
-    weight = 1
 [[menu.main]]
     name = "Blogs"
     url = "/blogs/"
-    weight = 2
+    weight = 1
 [[menu.main]]
     name = "Gallery"
     url = "/gallery/"
+    weight = 2
+[[menu.main]]
+    name = "Socials"
+    url = "#"
     weight = 3

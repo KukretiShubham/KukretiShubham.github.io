@@ -2,6 +2,7 @@
 title: "Creator Sum Value & Creator Factor"
 date: 2022-12-25T19:59:44+05:30
 draft: false
+categories: ["Personal"]
 ---
 
 Readers might feel lost or not making sense of it. Totally alright. I am still working on it.

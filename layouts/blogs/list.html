@@ -1,8 +1,9 @@
 {{ partial "header.html" . }}
 
 <section id=content>
+  
   <!-- Research Category -->
-  {{ $researchPosts := where (where .Site.RegularPages "Section" "blogs") "Params.categories" "intersect" (slice "Research") }}
+  {{ $researchPosts := where .Pages "Params.categories" "intersect" (slice "Research") }}
   {{ if $researchPosts }}
   <div class="category-section">
     <h2>Research</h2>
@@ -22,7 +23,7 @@
   {{ end }}
   
   <!-- Personal Category -->
-  {{ $personalPosts := where (where .Site.RegularPages "Section" "blogs") "Params.categories" "intersect" (slice "Personal") }}
+  {{ $personalPosts := where .Pages "Params.categories" "intersect" (slice "Personal") }}
   {{ if $personalPosts }}
   <div class="category-section">
     <h2>Personal</h2>

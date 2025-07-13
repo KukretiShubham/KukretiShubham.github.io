@@ -2,8 +2,9 @@
 title: "Then to Now"
 date: 2025-03-13T20:25:01+05:30
 images: ["/images/dump/2.jpg"]
-description: "It’s always about journey"
+description: "It's always about journey"
 draft: false
+categories: ["Personal"]
 ---
 
 ## I think it's the Journey

@@ -1,0 +1,50 @@
+{{ partial "header.html" . }}
+
+<section id=content>
+  <h1>{{ if .Params.heading }} {{ .Params.heading }} {{ else }} {{ .Title }} {{ end }}</h1>
+
+  {{ if .Params.date }}
+    <div id=sub-header>
+      {{ .Date.Format (.Site.Params.dateform | default "January 2006") }} · {{ .ReadingTime }} minute read
+    </div>
+  {{ end }}
+
+  <div class="entry-content">
+    {{ .Content }}
+  </div>
+
+  <div id=links>
+    {{ $currentCategory := index .Params.categories 0 }}
+    {{ if $currentCategory }}
+      {{ $sameCategoryPosts := where (where .Site.RegularPages "Section" "blogs") "Params.categories" "intersect" (slice $currentCategory) }}
+      {{ $sameCategoryPosts := $sameCategoryPosts.ByDate }}
+      
+      {{ $currentIndex := 0 }}
+      {{ range $index, $post := $sameCategoryPosts }}
+        {{ if eq $post.Permalink $.Permalink }}
+          {{ $currentIndex = $index }}
+        {{ end }}
+      {{ end }}
+      
+      {{ $prevPost := index $sameCategoryPosts (sub $currentIndex 1) }}
+      {{ $nextPost := index $sameCategoryPosts (add $currentIndex 1) }}
+      
+      {{ if $prevPost }}
+        <a href="{{$prevPost.Permalink}}">&laquo;&nbsp;{{$prevPost.Title}}</a>
+      {{ end }}
+      {{ if $nextPost }}
+        <a href="{{$nextPost.Permalink}}">{{$nextPost.Title}}&nbsp;&raquo;</a>
+      {{ end }}
+    {{ else }}
+      <!-- Fallback to default behavior if no category -->
+      {{ if .PrevInSection }}
+        <a href="{{.PrevInSection.Permalink}}">&laquo;&nbsp;{{.PrevInSection.Title}}</a>
+      {{ end }}
+      {{ if .NextInSection }}
+        <a href="{{.NextInSection.Permalink}}">{{.NextInSection.Title}}&nbsp;&raquo;</a>
+      {{ end }}
+    {{ end }}
+  </div>
+</section>
+
+{{ partial "footer.html" . }} 

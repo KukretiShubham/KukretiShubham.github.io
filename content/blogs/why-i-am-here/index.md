@@ -2,6 +2,7 @@
 title: "Why I am here"
 date: 2022-12-24T22:49:00+05:30
 draft: false
+categories: ["Personal"]
 ---
 
 
