@@ -92,14 +92,14 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle">{{ .Name }}</a>
               <div class="dropdown-content">
-                {{ if .Site.Params.twitter }}
-                  <a href="{{ .Site.Params.twitter }}" target="_blank">Twitter</a>
+                {{ if $.Site.Params.twitter }}
+                  <a href="{{ $.Site.Params.twitter }}" target="_blank">Twitter</a>
                 {{ end }}
-                {{ if .Site.Params.github }}
-                  <a href="{{ .Site.Params.github }}" target="_blank">Github</a>
+                {{ if $.Site.Params.github }}
+                  <a href="{{ $.Site.Params.github }}" target="_blank">Github</a>
                 {{ end }}
-                {{ if .Site.Params.linkedin }}
-                  <a href="{{ .Site.Params.linkedin }}" target="_blank">LinkedIn</a>
+                {{ if $.Site.Params.linkedin }}
+                  <a href="{{ $.Site.Params.linkedin }}" target="_blank">LinkedIn</a>
                 {{ end }}
               </div>
             </li>
