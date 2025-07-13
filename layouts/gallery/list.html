@@ -3,6 +3,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+<script>
+lightbox.option({
+  'wrapAround': true,
+  'showImageNumberLabel': true
+});
+</script>
 
 <style>
 .fuji-card {
@@ -17,11 +23,13 @@
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  animation: fadeIn 0.5s ease-in;
 }
 
 .fuji-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.1);
+  border-color: #bbb;
 }
 
 .fuji-image-container {
@@ -57,8 +65,13 @@
   text-align: center;
   line-height: 1.3;
   font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
+.fuji-card:hover .fuji-caption {
+  opacity: 1;
+}
 
 
 .gallery-grid {
@@ -233,6 +246,11 @@
     padding: 12px !important;
   }
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 </style>
 
 <section id=content>
@@ -246,7 +264,7 @@
         <div class="fuji-card">
           <a href="{{ $img.RelPermalink }}" data-lightbox="gallery" data-title="{{ .caption }}">
             <div class="fuji-image-container">
-              <img src="{{ $thumb.RelPermalink }}" alt="{{ .caption }}" class="fuji-image">
+              <img src="{{ $thumb.RelPermalink }}" alt="{{ .caption }}" class="fuji-image" loading="lazy">
             </div>
           </a>
           <div class="fuji-caption">{{ .caption }}</div>
