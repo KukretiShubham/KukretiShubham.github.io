@@ -8,6 +8,10 @@ theme = "hugo-black-and-light-theme"
 pygmentsstyle       = "bw"
 pygmentscodefences  = true
 
+# RSS Configuration
+rssLimit = 20
+enableRobotsTXT = true
+
 [params]
   sitename = "Shubham Kukreti"
   disableWebFonts = false
