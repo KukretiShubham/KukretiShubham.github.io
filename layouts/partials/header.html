@@ -37,50 +37,6 @@
     {{ range .AlternativeOutputFormats -}}
         {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{ end -}}
-
-    <style>
-      /* Dropdown styles */
-      .dropdown {
-        position: relative;
-        display: inline-block;
-      }
-
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-        border-radius: 4px;
-        top: 100%;
-        left: 0;
-      }
-
-      .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        border-bottom: 1px solid #eee;
-      }
-
-      .dropdown-content a:hover {
-        background-color: #f1f1f1;
-      }
-
-      .dropdown-content a:last-child {
-        border-bottom: none;
-      }
-
-      .dropdown.active .dropdown-content {
-        display: block;
-      }
-
-      .dropdown-toggle {
-        cursor: pointer;
-      }
-    </style>
   </head>
 
   <body>
@@ -88,58 +44,7 @@
       <h1><a href="/">{{ .Site.Params.sitename }}</a></h1>
       <ul>
         {{ range .Site.Menus.main }}
-          {{ if eq .Name "Socials" }}
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle">{{ .Name }}</a>
-              <div class="dropdown-content">
-                {{ if $.Site.Params.twitter }}
-                  <a href="{{ $.Site.Params.twitter }}" target="_blank">Twitter</a>
-                {{ end }}
-                {{ if $.Site.Params.github }}
-                  <a href="{{ $.Site.Params.github }}" target="_blank">Github</a>
-                {{ end }}
-                {{ if $.Site.Params.linkedin }}
-                  <a href="{{ $.Site.Params.linkedin }}" target="_blank">LinkedIn</a>
-                {{ end }}
-              </div>
-            </li>
-          {{ else }}
-            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
-          {{ end }}
+          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
         {{ end }}
       </ul>
-    </section>
-
-    <script>
-      // Dropdown functionality
-      document.addEventListener('DOMContentLoaded', function() {
-        const dropdowns = document.querySelectorAll('.dropdown');
-        
-        dropdowns.forEach(function(dropdown) {
-          const toggle = dropdown.querySelector('.dropdown-toggle');
-          
-          toggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Close other dropdowns
-            dropdowns.forEach(function(otherDropdown) {
-              if (otherDropdown !== dropdown) {
-                otherDropdown.classList.remove('active');
-              }
-            });
-            
-            // Toggle current dropdown
-            dropdown.classList.toggle('active');
-          });
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(e) {
-          if (!e.target.closest('.dropdown')) {
-            dropdowns.forEach(function(dropdown) {
-              dropdown.classList.remove('active');
-            });
-          }
-        });
-      });
-    </script> 
+    </section> 

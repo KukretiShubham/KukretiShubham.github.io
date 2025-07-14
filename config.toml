@@ -11,11 +11,6 @@ pygmentscodefences  = true
 [params]
   sitename = "Shubham Kukreti"
   disableWebFonts = false
-  
-  # Social media links for the dropdown
-  twitter = "https://twitter.com/ShubhamKukretii"
-  github = "https://github.com/KukretiShubham"
-  linkedin = "https://www.linkedin.com/in/shubhamkukreti/"
 
 [[menu.main]]
     name = "Blogs"
@@ -27,5 +22,5 @@ pygmentscodefences  = true
     weight = 2
 [[menu.main]]
     name = "Socials"
-    url = "#"
+    url = "/social/"
     weight = 3
