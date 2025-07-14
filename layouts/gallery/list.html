@@ -1,14 +1,8 @@
 {{ partial "header.html" . }}
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
-<script>
-lightbox.option({
-  'wrapAround': true,
-  'showImageNumberLabel': true
-});
-</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
 
 <style>
 .fuji-card {
@@ -17,19 +11,17 @@ lightbox.option({
   background: #f8f8f8;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 15px;
   margin: 10px;
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.2s ease;
   cursor: pointer;
-  animation: fadeIn 0.5s ease-in;
 }
 
 .fuji-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.1);
-  border-color: #bbb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .fuji-image-container {
@@ -48,6 +40,11 @@ lightbox.option({
   object-fit: cover;
   object-position: center center;
   display: block;
+  transition: opacity 0.2s ease;
+}
+
+.fuji-image.loading {
+  opacity: 0.5;
 }
 
 .fuji-caption {
@@ -66,18 +63,17 @@ lightbox.option({
   line-height: 1.3;
   font-weight: 500;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 
 .fuji-card:hover .fuji-caption {
   opacity: 1;
 }
 
-
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  gap: 20px;
   padding: 20px;
   justify-items: center;
   max-width: 1200px;
@@ -87,7 +83,7 @@ lightbox.option({
 @media (max-width: 768px) {
   .gallery-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    gap: 15px;
     padding: 15px;
   }
   
@@ -104,7 +100,7 @@ lightbox.option({
 @media (max-width: 480px) {
   .gallery-grid {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 10px;
     padding: 10px;
   }
   
@@ -118,45 +114,23 @@ lightbox.option({
   }
 }
 
-/* Enhanced Lightbox2 Instant Camera Card Styling */
-.lightbox .lb-outerContainer {
-  background: transparent !important;
-  border-radius: 12px !important;
-  overflow: visible !important;
-}
-
+/* Simplified Lightbox styling */
 .lightbox .lb-container {
   background: #f8f8f8 !important;
-  border-radius: 12px !important;
-  padding: 20px 20px 0 20px !important;
-  box-shadow: 
-    0 15px 35px rgba(0, 0, 0, 0.2),
-    0 5px 15px rgba(0, 0, 0, 0.1) !important;
-  border: 1px solid #ddd !important;
-  position: relative !important;
+  border-radius: 8px !important;
+  padding: 15px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
 }
 
 .lightbox .lb-image {
-  border-radius: 6px !important;
-  box-shadow: 0 0 0 8px #fff, 0 0 0 9px #ddd !important;
-  background: #fff !important;
-  max-width: calc(100vw - 100px) !important;
-  max-height: calc(100vh - 150px) !important;
-  width: auto !important;
-  height: auto !important;
-  object-fit: contain !important;
+  border-radius: 4px !important;
+  max-width: calc(100vw - 80px) !important;
+  max-height: calc(100vh - 120px) !important;
 }
 
 .lightbox .lb-details {
   background: #f8f8f8 !important;
-  border-radius: 0 0 12px 12px !important;
-  padding: 20px !important;
-  margin-top: 0 !important;
-  border: none !important;
-  min-height: 60px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
+  padding: 15px !important;
 }
 
 .lightbox .lb-caption {
@@ -172,84 +146,11 @@ lightbox.option({
   max-width: 100% !important;
 }
 
-.lightbox .lb-number {
-  font-family: 'Courier New', monospace !important;
-  font-size: 12px !important;
-  color: #888 !important;
-  text-align: center !important;
-  margin-top: 8px !important;
-  opacity: 0.8 !important;
-}
-
-.lightbox .lb-dataContainer {
-  background: transparent !important;
-  border-radius: 0 !important;
-}
-
-/* Navigation arrows styling */
-.lightbox .lb-prev,
-.lightbox .lb-next {
-  opacity: 0.8 !important;
-  transition: opacity 0.2s ease !important;
-}
-
-.lightbox .lb-prev:hover,
-.lightbox .lb-next:hover {
-  opacity: 1 !important;
-}
-
-/* Close button styling */
-.lightbox .lb-close {
-  opacity: 0.8 !important;
-  transition: opacity 0.2s ease !important;
-}
-
-.lightbox .lb-close:hover {
-  opacity: 1 !important;
-}
-
-/* Responsive adjustments */
 @media (max-width: 768px) {
-  .lightbox .lb-container {
-    padding: 15px 15px 0 15px !important;
-  }
-  
-  .lightbox .lb-image {
-    max-width: calc(100vw - 60px) !important;
-    max-height: calc(100vh - 120px) !important;
-  }
-  
-  .lightbox .lb-caption {
-    font-size: 14px !important;
-  }
-  
-  .lightbox .lb-details {
-    padding: 15px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .lightbox .lb-container {
-    padding: 12px 12px 0 12px !important;
-  }
-  
   .lightbox .lb-image {
     max-width: calc(100vw - 40px) !important;
     max-height: calc(100vh - 100px) !important;
   }
-  
-  .lightbox .lb-caption {
-    font-size: 13px !important;
-  }
-  
-  .lightbox .lb-details {
-    padding: 12px !important;
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 </style>
 
@@ -260,11 +161,11 @@ lightbox.option({
       {{ $img := $.Resources.Get .file }}
       {{ if $img }}
         <!-- Image found as page resource -->
-        {{ $thumb := $img.Resize "300x300" }}
+        {{ $thumb := $img.Resize "300x300 webp q75" }}
         <div class="fuji-card">
           <a href="{{ $img.RelPermalink }}" data-lightbox="gallery" data-title="{{ .caption }}">
             <div class="fuji-image-container">
-              <img src="{{ $thumb.RelPermalink }}" alt="{{ .caption }}" class="fuji-image" loading="lazy">
+              <img src="{{ $thumb.RelPermalink }}" alt="{{ .caption }}" width="300" height="300" class="fuji-image" loading="lazy" decoding="async">
             </div>
           </a>
           <div class="fuji-caption">{{ .caption }}</div>
@@ -274,7 +175,7 @@ lightbox.option({
         <div class="fuji-card">
           <a href="{{ .file }}" data-lightbox="gallery" data-title="{{ .caption }}">
             <div class="fuji-image-container">
-              <img src="{{ .file }}" alt="{{ .caption }}" class="fuji-image">
+              <img src="{{ .file }}" alt="{{ .caption }}" width="300" height="300" class="fuji-image" loading="lazy" decoding="async">
             </div>
           </a>
           <div class="fuji-caption">{{ .caption }}</div>
@@ -283,5 +184,53 @@ lightbox.option({
     {{ end }}
   </div>
 </section>
+
+<script>
+// Improved lazy loading and performance
+document.addEventListener('DOMContentLoaded', function() {
+  // Configure lightbox after scripts have loaded
+  function initLightbox() {
+    if (typeof lightbox !== 'undefined') {
+      lightbox.option({
+        'wrapAround': true,
+        'showImageNumberLabel': true
+      });
+    } else {
+      // Retry after a short delay if lightbox isn't loaded yet
+      setTimeout(initLightbox, 100);
+    }
+  }
+  
+  // Initialize lightbox
+  initLightbox();
+
+  // Add loading class to images while they load
+  const images = document.querySelectorAll('.fuji-image');
+  images.forEach(img => {
+    img.classList.add('loading');
+    img.addEventListener('load', function() {
+      this.classList.remove('loading');
+    });
+  });
+
+  // Intersection Observer for better performance
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src || img.src;
+          img.classList.remove('loading');
+          observer.unobserve(img);
+        }
+      });
+    });
+
+    images.forEach(img => {
+      imageObserver.observe(img);
+    });
+  }
+});
+</script>
 
 {{ partial "footer.html" . }} 
