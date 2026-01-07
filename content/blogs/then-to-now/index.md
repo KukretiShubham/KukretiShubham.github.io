@@ -5,6 +5,7 @@ images: ["/images/dump/2.jpg"]
 description: "It's always about journey"
 draft: false
 categories: ["Personal"]
+pinned: true
 ---
 
 ## I think it's the Journey
