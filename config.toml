@@ -14,7 +14,8 @@ enableRobotsTXT = true
 
 [params]
   sitename = "Shubham Kukreti"
-  disableWebFonts = false
+  # Use system fonts for speed and minimalism (saves ~20KB + faster render)
+  disableWebFonts = true
 
 [[menu.main]]
     name = "Blogs"

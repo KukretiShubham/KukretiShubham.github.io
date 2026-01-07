@@ -1,8 +1,81 @@
 {{ partial "header.html" . }}
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css" />
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+<!-- Lightweight lightbox styles - no external dependencies -->
+<style>
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: zoom-out;
+}
+.lightbox-overlay.active {
+  display: flex;
+}
+.lightbox-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  position: relative;
+}
+.lightbox-content img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 4px;
+}
+.lightbox-caption {
+  text-align: center;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  padding: 15px;
+  font-size: 14px;
+}
+.lightbox-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 10px;
+}
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 20px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.lightbox-nav:hover {
+  opacity: 1;
+}
+.lightbox-prev {
+  left: 10px;
+}
+.lightbox-next {
+  right: 10px;
+}
+@media (max-width: 768px) {
+  .lightbox-nav {
+    font-size: 30px;
+    padding: 15px;
+  }
+}
+</style>
 
 <style>
 .fuji-card {
@@ -114,42 +187,18 @@
   }
 }
 
-/* Simplified Lightbox styling */
-.lightbox .lb-container {
-  background: #f8f8f8 !important;
-  border-radius: 8px !important;
-  padding: 15px !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
-}
-
-.lightbox .lb-image {
-  border-radius: 4px !important;
-  max-width: calc(100vw - 80px) !important;
-  max-height: calc(100vh - 120px) !important;
-}
-
-.lightbox .lb-details {
-  background: #f8f8f8 !important;
-  padding: 15px !important;
-}
-
-.lightbox .lb-caption {
-  font-family: 'Courier New', monospace !important;
-  font-size: 16px !important;
-  color: #333 !important;
-  text-align: center !important;
-  line-height: 1.4 !important;
-  font-weight: 500 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  word-wrap: break-word !important;
-  max-width: 100% !important;
-}
-
-@media (max-width: 768px) {
-  .lightbox .lb-image {
-    max-width: calc(100vw - 40px) !important;
-    max-height: calc(100vh - 100px) !important;
+/* Dark mode support for lightbox */
+@media (prefers-color-scheme: dark) {
+  .fuji-card {
+    background: #1e1e1e;
+    border-color: #333;
+  }
+  .fuji-image-container {
+    background: #2a2a2a;
+    border-color: #444;
+  }
+  .fuji-caption {
+    color: #ddd;
   }
 }
 </style>
@@ -157,27 +206,24 @@
 <section id=content>
   <h1>{{ .Title }}</h1>
   <div class="gallery-grid">
-    {{ range .Params.photos }}
+    {{ range $index, $photo := .Params.photos }}
       {{ $img := $.Resources.Get .file }}
       {{ if $img }}
-        <!-- Image found as page resource -->
+        <!-- Image found as page resource - use Hugo image processing -->
         {{ $thumb := $img.Resize "300x300 webp q75" }}
-        <div class="fuji-card">
-          <a href="{{ $img.RelPermalink }}" data-lightbox="gallery" data-title="{{ .caption }}">
-            <div class="fuji-image-container">
-              <img src="{{ $thumb.RelPermalink }}" alt="{{ .caption }}" width="300" height="300" class="fuji-image" loading="lazy" decoding="async">
-            </div>
-          </a>
+        {{ $fullsize := $img.Resize "1920x webp q85" }}
+        <div class="fuji-card" data-index="{{ $index }}" data-fullsize="{{ $fullsize.RelPermalink }}" data-caption="{{ .caption }}">
+          <div class="fuji-image-container">
+            <img src="{{ $thumb.RelPermalink }}" alt="{{ .caption }}" width="300" height="300" class="fuji-image" loading="lazy" decoding="async">
+          </div>
           <div class="fuji-caption">{{ .caption }}</div>
         </div>
       {{ else }}
-        <!-- Image in static directory -->
-        <div class="fuji-card">
-          <a href="{{ .file }}" data-lightbox="gallery" data-title="{{ .caption }}">
-            <div class="fuji-image-container">
-              <img src="{{ .file }}" alt="{{ .caption }}" width="300" height="300" class="fuji-image" loading="lazy" decoding="async">
-            </div>
-          </a>
+        <!-- Image in static directory (fallback) -->
+        <div class="fuji-card" data-index="{{ $index }}" data-fullsize="{{ .file }}" data-caption="{{ .caption }}">
+          <div class="fuji-image-container">
+            <img src="{{ .file }}" alt="{{ .caption }}" width="300" height="300" class="fuji-image" loading="lazy" decoding="async">
+          </div>
           <div class="fuji-caption">{{ .caption }}</div>
         </div>
       {{ end }}
@@ -185,52 +231,80 @@
   </div>
 </section>
 
-<script>
-// Improved lazy loading and performance
-document.addEventListener('DOMContentLoaded', function() {
-  // Configure lightbox after scripts have loaded
-  function initLightbox() {
-    if (typeof lightbox !== 'undefined') {
-      lightbox.option({
-        'wrapAround': true,
-        'showImageNumberLabel': true
-      });
-    } else {
-      // Retry after a short delay if lightbox isn't loaded yet
-      setTimeout(initLightbox, 100);
-    }
-  }
-  
-  // Initialize lightbox
-  initLightbox();
+<!-- Lightweight vanilla JS lightbox -->
+<div class="lightbox-overlay" id="lightbox">
+  <div class="lightbox-content">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" aria-label="Previous">&lsaquo;</button>
+    <button class="lightbox-nav lightbox-next" aria-label="Next">&rsaquo;</button>
+    <img src="" alt="" id="lightbox-img">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+</div>
 
-  // Add loading class to images while they load
-  const images = document.querySelectorAll('.fuji-image');
-  images.forEach(img => {
-    img.classList.add('loading');
-    img.addEventListener('load', function() {
-      this.classList.remove('loading');
+<script>
+// Lightweight vanilla JS lightbox - no jQuery needed (~1KB vs 97KB)
+(function() {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const cards = document.querySelectorAll('.fuji-card');
+  let currentIndex = 0;
+  const gallery = [];
+
+  // Build gallery array
+  cards.forEach((card, i) => {
+    gallery.push({
+      src: card.dataset.fullsize,
+      caption: card.dataset.caption
     });
+    card.addEventListener('click', () => openLightbox(i));
   });
 
-  // Intersection Observer for better performance
-  if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src || img.src;
-          img.classList.remove('loading');
-          observer.unobserve(img);
-        }
-      });
-    });
-
-    images.forEach(img => {
-      imageObserver.observe(img);
-    });
+  function openLightbox(index) {
+    currentIndex = index;
+    updateLightbox();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
   }
-});
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function updateLightbox() {
+    lightboxImg.src = gallery[currentIndex].src;
+    lightboxImg.alt = gallery[currentIndex].caption;
+    lightboxCaption.textContent = gallery[currentIndex].caption;
+  }
+
+  function navigate(direction) {
+    currentIndex = (currentIndex + direction + gallery.length) % gallery.length;
+    updateLightbox();
+  }
+
+  // Event listeners
+  document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+  document.querySelector('.lightbox-prev').addEventListener('click', (e) => { e.stopPropagation(); navigate(-1); });
+  document.querySelector('.lightbox-next').addEventListener('click', (e) => { e.stopPropagation(); navigate(1); });
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigate(-1);
+    if (e.key === 'ArrowRight') navigate(1);
+  });
+
+  // Lazy loading for thumbnails
+  const thumbs = document.querySelectorAll('.fuji-image');
+  thumbs.forEach(img => {
+    img.classList.add('loading');
+    img.addEventListener('load', function() { this.classList.remove('loading'); });
+  });
+})();
 </script>
 
-{{ partial "footer.html" . }} 
+{{ partial "footer.html" . }}

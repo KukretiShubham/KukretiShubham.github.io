@@ -11,16 +11,20 @@
       {{ template "_internal/opengraph.html" . }}
       {{ template "_internal/twitter_cards.html" . }}
     {{ end }}
-    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
-    {{ if not .Site.Params.disableWebFonts }}
-      <link href="https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400&display=swap" rel="stylesheet" media="print" type="text/css" onload="this.media='all'">
+    {{/* MathJax only loaded on pages that need it - add math: true to front matter */}}
+    {{ if .Params.math }}
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     {{ end }}
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/png" href="/favicon.png?v={{ now.Unix }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v={{ now.Unix }}">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico?v={{ now.Unix }}">
+    {{ if not .Site.Params.disableWebFonts }}
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Old+Standard+TT:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    {{ end }}
+
+    <!-- Favicon - cached properly without cache-busting -->
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     <title>
       {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
