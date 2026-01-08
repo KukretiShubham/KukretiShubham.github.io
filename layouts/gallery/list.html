@@ -1,237 +1,170 @@
 {{ partial "header.html" . }}
 
-<!-- Lightweight lightbox styles - no external dependencies -->
 <style>
+/* Masonry gallery - minimal, clean */
+.gallery-masonry {
+  column-count: 3;
+  column-gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.2s;
+}
+
+.gallery-item:hover img {
+  opacity: 0.85;
+}
+
+.gallery-caption {
+  font-size: 0.8em;
+  color: #888;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+  .gallery-masonry {
+    column-count: 2;
+    column-gap: 12px;
+  }
+  .gallery-item {
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 450px) {
+  .gallery-masonry {
+    column-count: 1;
+  }
+}
+
+/* Lightbox - minimal */
 .lightbox-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   display: none;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   cursor: zoom-out;
 }
+
 .lightbox-overlay.active {
   display: flex;
 }
+
 .lightbox-content {
   max-width: 90vw;
   max-height: 90vh;
   position: relative;
 }
+
 .lightbox-content img {
   max-width: 90vw;
   max-height: 85vh;
   object-fit: contain;
-  border-radius: 4px;
 }
+
 .lightbox-caption {
   text-align: center;
-  color: #fff;
-  font-family: 'Courier New', monospace;
-  padding: 15px;
-  font-size: 14px;
+  color: #aaa;
+  font-size: 13px;
+  padding: 12px;
 }
+
 .lightbox-close {
   position: absolute;
-  top: -40px;
+  top: -35px;
   right: 0;
-  color: #fff;
-  font-size: 30px;
+  color: #888;
+  font-size: 24px;
   cursor: pointer;
   background: none;
   border: none;
-  padding: 10px;
 }
+
+.lightbox-close:hover {
+  color: #fff;
+}
+
 .lightbox-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  color: #fff;
-  font-size: 40px;
+  color: #666;
+  font-size: 32px;
   cursor: pointer;
   background: none;
   border: none;
   padding: 20px;
-  opacity: 0.7;
-  transition: opacity 0.2s;
+  transition: color 0.2s;
 }
+
 .lightbox-nav:hover {
-  opacity: 1;
+  color: #fff;
 }
-.lightbox-prev {
-  left: 10px;
-}
-.lightbox-next {
-  right: 10px;
-}
+
+.lightbox-prev { left: -60px; }
+.lightbox-next { right: -60px; }
+
 @media (max-width: 768px) {
+  .lightbox-prev { left: 10px; }
+  .lightbox-next { right: 10px; }
   .lightbox-nav {
-    font-size: 30px;
+    font-size: 28px;
     padding: 15px;
-  }
-}
-</style>
-
-<style>
-.fuji-card {
-  width: 280px;
-  height: 350px;
-  background: #f8f8f8;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  margin: 10px;
-  position: relative;
-  transition: transform 0.2s ease;
-  cursor: pointer;
-}
-
-.fuji-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.fuji-image-container {
-  width: 100%;
-  height: 250px;
-  background: #fff;
-  border: 2px solid #e0e0e0;
-  border-radius: 4px;
-  overflow: hidden;
-  position: relative;
-}
-
-.fuji-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-  display: block;
-  transition: opacity 0.2s ease;
-}
-
-.fuji-image.loading {
-  opacity: 0.5;
-}
-
-.fuji-caption {
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
-  right: 15px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Courier New', monospace;
-  font-size: 14px;
-  color: #333;
-  text-align: center;
-  line-height: 1.3;
-  font-weight: 500;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.fuji-card:hover .fuji-caption {
-  opacity: 1;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  justify-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-  .gallery-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-    padding: 15px;
-  }
-  
-  .fuji-card {
-    width: 250px;
-    height: 320px;
-  }
-  
-  .fuji-image-container {
-    height: 220px;
+    background: rgba(0,0,0,0.3);
   }
 }
 
-@media (max-width: 480px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 10px;
-  }
-  
-  .fuji-card {
-    width: 220px;
-    height: 290px;
-  }
-  
-  .fuji-image-container {
-    height: 190px;
-  }
-}
-
-/* Dark mode support for lightbox */
+/* Dark mode */
 @media (prefers-color-scheme: dark) {
-  .fuji-card {
-    background: #1e1e1e;
-    border-color: #333;
-  }
-  .fuji-image-container {
-    background: #2a2a2a;
-    border-color: #444;
-  }
-  .fuji-caption {
-    color: #ddd;
+  .gallery-caption {
+    color: #666;
   }
 }
 </style>
 
 <section id=content>
   <h1>{{ .Title }}</h1>
-  <div class="gallery-grid">
+  
+  <div class="gallery-masonry">
     {{ range $index, $photo := .Params.photos }}
       {{ $img := $.Resources.Get .file }}
       {{ if $img }}
-        <!-- Image found as page resource - use Hugo image processing -->
-        {{ $thumb := $img.Resize "300x300 webp q75" }}
+        {{ $thumb := $img.Resize "600x webp q80" }}
         {{ $fullsize := $img.Resize "1920x webp q85" }}
-        <div class="fuji-card" data-index="{{ $index }}" data-fullsize="{{ $fullsize.RelPermalink }}" data-caption="{{ .caption }}">
-          <div class="fuji-image-container">
-            <img src="{{ $thumb.RelPermalink }}" alt="{{ .caption }}" width="300" height="300" class="fuji-image" loading="lazy" decoding="async">
-          </div>
-          <div class="fuji-caption">{{ .caption }}</div>
+        <div class="gallery-item" data-index="{{ $index }}" data-fullsize="{{ $fullsize.RelPermalink }}" data-caption="{{ .caption }}">
+          <img src="{{ $thumb.RelPermalink }}" alt="{{ .caption }}" loading="lazy" decoding="async">
+          {{ if .caption }}<div class="gallery-caption">{{ .caption }}</div>{{ end }}
         </div>
       {{ else }}
-        <!-- Image in static directory (fallback) -->
-        <div class="fuji-card" data-index="{{ $index }}" data-fullsize="{{ .file }}" data-caption="{{ .caption }}">
-          <div class="fuji-image-container">
-            <img src="{{ .file }}" alt="{{ .caption }}" width="300" height="300" class="fuji-image" loading="lazy" decoding="async">
-          </div>
-          <div class="fuji-caption">{{ .caption }}</div>
+        <div class="gallery-item" data-index="{{ $index }}" data-fullsize="{{ .file }}" data-caption="{{ .caption }}">
+          <img src="{{ .file }}" alt="{{ .caption }}" loading="lazy" decoding="async">
+          {{ if .caption }}<div class="gallery-caption">{{ .caption }}</div>{{ end }}
         </div>
       {{ end }}
     {{ end }}
   </div>
 </section>
 
-<!-- Lightweight vanilla JS lightbox -->
+<!-- Lightbox -->
 <div class="lightbox-overlay" id="lightbox">
   <div class="lightbox-content">
     <button class="lightbox-close" aria-label="Close">&times;</button>
@@ -243,22 +176,20 @@
 </div>
 
 <script>
-// Lightweight vanilla JS lightbox - no jQuery needed (~1KB vs 97KB)
 (function() {
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
-  const cards = document.querySelectorAll('.fuji-card');
+  const items = document.querySelectorAll('.gallery-item');
   let currentIndex = 0;
   const gallery = [];
 
-  // Build gallery array
-  cards.forEach((card, i) => {
+  items.forEach((item, i) => {
     gallery.push({
-      src: card.dataset.fullsize,
-      caption: card.dataset.caption
+      src: item.dataset.fullsize,
+      caption: item.dataset.caption
     });
-    card.addEventListener('click', () => openLightbox(i));
+    item.addEventListener('click', () => openLightbox(i));
   });
 
   function openLightbox(index) {
@@ -279,32 +210,24 @@
     lightboxCaption.textContent = gallery[currentIndex].caption;
   }
 
-  function navigate(direction) {
-    currentIndex = (currentIndex + direction + gallery.length) % gallery.length;
+  function navigate(dir) {
+    currentIndex = (currentIndex + dir + gallery.length) % gallery.length;
     updateLightbox();
   }
 
-  // Event listeners
   document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
   document.querySelector('.lightbox-prev').addEventListener('click', (e) => { e.stopPropagation(); navigate(-1); });
   document.querySelector('.lightbox-next').addEventListener('click', (e) => { e.stopPropagation(); navigate(1); });
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 
-  // Keyboard navigation
   document.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowLeft') navigate(-1);
     if (e.key === 'ArrowRight') navigate(1);
   });
-
-  // Lazy loading for thumbnails
-  const thumbs = document.querySelectorAll('.fuji-image');
-  thumbs.forEach(img => {
-    img.classList.add('loading');
-    img.addEventListener('load', function() { this.classList.remove('loading'); });
-  });
 })();
 </script>
 
 {{ partial "footer.html" . }}
+<!-- Lightweight vanilla JS lightbox -->
