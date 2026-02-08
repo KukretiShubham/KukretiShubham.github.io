@@ -3,6 +3,10 @@ title: "It's Hard"
 date: 2025-09-21T18:56:07+05:30
 draft: false
 categories: ["Personal"]
+archived: true
+_build:
+  render: false
+  list: always
 ---
 
 Being honest is difficult.

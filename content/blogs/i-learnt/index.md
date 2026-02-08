@@ -3,6 +3,10 @@ title: "Learn"
 date: 2025-09-03T05:02:32+05:30
 draft: false
 categories: ["Personal"]
+archived: true
+_build:
+  render: false
+  list: always
 ---
 
 So, there were certain things about me I have not done for anyone, or I don't do for anyone. Or maybe I just didn't feel like doing them. A few of the things were coming to me, I kept myself away, knowing I wouldn't be able to do justice to them. I didn't feel the value of it, maybe. Or maybe I wasn't ready to take them on at that moment in my life. I knew I wouldn't be able to handle them well, since I was so busy in my life, focusing on what I love, what I wanted to achieve. So, I always denied it or resisted- said "no" in the rudest manner, so the "No" would make them realise how much of a douchebag I am, and feel better about not being in my company. 

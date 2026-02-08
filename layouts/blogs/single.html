@@ -16,7 +16,7 @@
   <div id=links>
     {{ $currentCategory := index .Params.categories 0 }}
     {{ if $currentCategory }}
-      {{ $sameCategoryPosts := where (where .Site.RegularPages "Section" "blogs") "Params.categories" "intersect" (slice $currentCategory) }}
+      {{ $sameCategoryPosts := where (where (where .Site.RegularPages "Section" "blogs") "Params.categories" "intersect" (slice $currentCategory)) "Params.archived" "!=" true }}
       {{ $sameCategoryPosts := $sameCategoryPosts.ByDate }}
       
       {{ $currentIndex := 0 }}

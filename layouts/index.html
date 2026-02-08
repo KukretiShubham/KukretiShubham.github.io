@@ -4,9 +4,10 @@
   <!-- Research Category -->
   {{ $researchPosts := where (where .Site.RegularPages "Section" "blogs") "Params.categories" "intersect" (slice "Research") }}
   {{ if $researchPosts }}
-  {{/* Separate pinned and unpinned posts */}}
-  {{ $pinnedResearch := where $researchPosts "Params.pinned" true }}
-  {{ $unpinnedResearch := where $researchPosts "Params.pinned" "!=" true }}
+  {{/* Separate pinned, regular, and archived posts */}}
+  {{ $pinnedResearch := where (where $researchPosts "Params.archived" "!=" true) "Params.pinned" true }}
+  {{ $unpinnedResearch := where (where $researchPosts "Params.pinned" "!=" true) "Params.archived" "!=" true }}
+  {{ $archivedResearch := where $researchPosts "Params.archived" true }}
   <div class="category-section">
     <h2>Research</h2>
     <ul class=posts_listing>
@@ -32,6 +33,12 @@
           </div>
         </li>
       {{ end }}
+      {{/* Show archived posts last - no link, just title */}}
+      {{ range $archivedResearch }}
+        <li>
+          <h3><span class="archived-title">{{ .Title }}</span><span class="archived-tag"> · archived</span></h3>
+        </li>
+      {{ end }}
     </ul>
   </div>
   {{ end }}
@@ -39,9 +46,10 @@
   <!-- Personal Category -->
   {{ $personalPosts := where (where .Site.RegularPages "Section" "blogs") "Params.categories" "intersect" (slice "Personal") }}
   {{ if $personalPosts }}
-  {{/* Separate pinned and unpinned posts */}}
-  {{ $pinnedPersonal := where $personalPosts "Params.pinned" true }}
-  {{ $unpinnedPersonal := where $personalPosts "Params.pinned" "!=" true }}
+  {{/* Separate pinned, regular, and archived posts */}}
+  {{ $pinnedPersonal := where (where $personalPosts "Params.archived" "!=" true) "Params.pinned" true }}
+  {{ $unpinnedPersonal := where (where $personalPosts "Params.pinned" "!=" true) "Params.archived" "!=" true }}
+  {{ $archivedPersonal := where $personalPosts "Params.archived" true }}
   <div class="category-section">
     <h2>Personal</h2>
     <ul class=posts_listing>
@@ -65,6 +73,12 @@
               {{ .Date.Format (.Site.Params.dateform | default "January 2006") }}
             {{end}}
           </div>
+        </li>
+      {{ end }}
+      {{/* Show archived posts last - no link, just title */}}
+      {{ range $archivedPersonal }}
+        <li>
+          <h3><span class="archived-title">{{ .Title }}</span><span class="archived-tag"> · archived</span></h3>
         </li>
       {{ end }}
     </ul>
