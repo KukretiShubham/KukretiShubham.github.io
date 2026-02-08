@@ -88,19 +88,32 @@
   padding: 12px;
 }
 
-.lightbox-close {
+.lightbox-controls {
   position: absolute;
   top: -35px;
   right: 0;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.lightbox-rotate,
+.lightbox-close {
   color: #888;
   font-size: 24px;
   cursor: pointer;
   background: none;
   border: none;
+  transition: color 0.2s;
 }
 
+.lightbox-rotate:hover,
 .lightbox-close:hover {
   color: #fff;
+}
+
+.lightbox-content img {
+  transition: transform 0.3s ease;
 }
 
 .lightbox-nav {
@@ -167,7 +180,10 @@
 <!-- Lightbox -->
 <div class="lightbox-overlay" id="lightbox">
   <div class="lightbox-content">
-    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <div class="lightbox-controls">
+      <button class="lightbox-rotate" id="lightbox-rotate" aria-label="Rotate">↻</button>
+      <button class="lightbox-close" aria-label="Close">&times;</button>
+    </div>
     <button class="lightbox-nav lightbox-prev" aria-label="Previous">&lsaquo;</button>
     <button class="lightbox-nav lightbox-next" aria-label="Next">&rsaquo;</button>
     <img src="" alt="" id="lightbox-img">
@@ -180,8 +196,10 @@
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
+  const rotateBtn = document.getElementById('lightbox-rotate');
   const items = document.querySelectorAll('.gallery-item');
   let currentIndex = 0;
+  let currentRotation = 0;
   const gallery = [];
 
   items.forEach((item, i) => {
@@ -194,6 +212,7 @@
 
   function openLightbox(index) {
     currentIndex = index;
+    currentRotation = 0;
     updateLightbox();
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -202,12 +221,21 @@
   function closeLightbox() {
     lightbox.classList.remove('active');
     document.body.style.overflow = '';
+    currentRotation = 0;
+    lightboxImg.style.transform = '';
   }
 
   function updateLightbox() {
+    currentRotation = 0;
+    lightboxImg.style.transform = '';
     lightboxImg.src = gallery[currentIndex].src;
     lightboxImg.alt = gallery[currentIndex].caption;
     lightboxCaption.textContent = gallery[currentIndex].caption;
+  }
+
+  function rotateImage() {
+    currentRotation = (currentRotation + 90) % 360;
+    lightboxImg.style.transform = 'rotate(' + currentRotation + 'deg)';
   }
 
   function navigate(dir) {
@@ -215,6 +243,7 @@
     updateLightbox();
   }
 
+  rotateBtn.addEventListener('click', (e) => { e.stopPropagation(); rotateImage(); });
   document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
   document.querySelector('.lightbox-prev').addEventListener('click', (e) => { e.stopPropagation(); navigate(-1); });
   document.querySelector('.lightbox-next').addEventListener('click', (e) => { e.stopPropagation(); navigate(1); });
@@ -225,6 +254,7 @@
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowLeft') navigate(-1);
     if (e.key === 'ArrowRight') navigate(1);
+    if (e.key === 'r' || e.key === 'R') rotateImage();
   });
 })();
 </script>

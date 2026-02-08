@@ -86,4 +86,55 @@ photos:
     caption: "Lynx: the best host"
   - file: 27-personal-18-years-jee-topper.jpg
     caption: "18 years old, highest marks in JEE mock exam, dreaming of IIT Roorkee"
+
+  - file: 36-india-a-day-in-a-parkblr.jpg
+    caption: "a day in a park-BLR"
+
+  - file: 37-india-agara-walk-hsr.jpg
+    caption: "Agara walk- HSR"
+
+  - file: 38-india-rain-aftermath.jpg
+    caption: "rain aftermath"
+
+  - file: 39-india-exploration.jpg
+    caption: "exploration"
+
+  - file: 40-india-bird-in-the-sky.jpg
+    caption: "bird in the sky"
+
+  - file: 41-india-tehri-garhwal-uttarakhand.jpg
+    caption: "Tehri Garhwal - Uttarakhand"
+
+  - file: 42-india-green-paint.jpg
+    caption: "green paint"
+
+  - file: 43-india-brown-white-brown-gree.jpg
+    caption: "brown white brown gree"
+
+  - file: 44-india-through-window-pane.jpg
+    caption: "through window pane"
+
+  - file: 45-india-tapovan-rishikesh.jpg
+    caption: "Tapovan - Rishikesh"
+
+  - file: 46-india-ganga-ghat-luxman-jhula.jpg
+    caption: "ganga ghat - luxman jhula"
+
+  - file: 47-india-idk.jpg
+    caption: "idk"
+
+  - file: 48-india-indiranagar-blr.jpg
+    caption: "indiranagar - BLR"
+
+  - file: 49-india-branched.jpg
+    caption: "branched"
+
+  - file: 50-india-vulture.jpg
+    caption: "vulture"
+
+  - file: 51-india-view-from-the-top.jpg
+    caption: "view from the top"
+
+  - file: 52-india-a-walk.jpg
+    caption: "a walk"
 ---
